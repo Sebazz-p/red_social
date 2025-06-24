@@ -12,19 +12,19 @@
 <body>
 
  <div class="registro">
-   <form action="/registro" method="POST">  
-    <h2 class="crear">Crea una cuenta</h2>
-
-    <input type="text" name="nombre_completo" placeholder="Nombre completo" required>
-    
-    <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" required>
-    
+  <form action="/registro" method="POST">
+    <input type="text" name="nombre" placeholder="Nombre completo" required>
     <input type="email" name="correo" placeholder="Correo electrónico" required>
-    
     <input type="password" name="contrasena" placeholder="Contraseña" required>
-    
-    <button class="btnregistro" type="submit">Registrarse</button>
+     <label for="carrera">Carrera:</label>
+        <select id="carrera" name="carrera" required>
+            <option value="Desarrollo de Software">Desarrollo de Software</option>
+            <option value="Administración">Administración</option>
+            <option value="Turismo">Turismo</option>
+        </select>
+    <button type="submit">Registrarse</button>
 </form>
+
 
 </div>
 
