@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+
+   
+
+    <title>Registro</title>
+</head>
+<body>
+
+ <div class="registro">
+   <form action="/registro" method="POST">  
+    <h2 class="crear">Crea una cuenta</h2>
+
+    <input type="text" name="nombre_completo" placeholder="Nombre completo" required>
+    
+    <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" required>
+    
+    <input type="email" name="correo" placeholder="Correo electrónico" required>
+    
+    <input type="password" name="contrasena" placeholder="Contraseña" required>
+    
+    <button class="btnregistro" type="submit">Registrarse</button>
+</form>
+
+</div>
+
+</body>
+</html>
