@@ -7,30 +7,32 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'         # Cambia según tu usuario MySQL
 app.config['MYSQL_PASSWORD'] = ''         # Cambia según tu contraseña MySQL
-app.config['MYSQL_DB'] = 'red_social'     # Cambia por el nombre de tu base de datos
+app.config['MYSQL_DB'] = 'red_social_universitaria'  # Nombre correcto de la base de datos
 
 mysql = MySQL(app)
 
-
+@app.route('/registro', methods=['GET', 'POST'])
 @app.route('/registro', methods=['GET', 'POST'])
 def registro():
     if request.method == 'POST':
-        nombre_completo = request.form.get('nombre_completo')
-        nombre_usuario = request.form.get('nombre_usuario')
+        nombre = request.form.get('nombre')
         correo = request.form.get('correo')
         contrasena = request.form.get('contrasena')
+        carrera = request.form.get('carrera')
+        foto_perfil = request.form.get('foto_perfil')  # puede estar vacío
 
-        # Guardar datos en la base
         cursor = mysql.connection.cursor()
         cursor.execute("""
-            INSERT INTO usuarios (nombre_completo, nombre_usuario, correo, contrasena)
-            VALUES (%s, %s, %s, %s)
-        """, (nombre_completo, nombre_usuario, correo, contrasena))
+            INSERT INTO usuarios (nombre, correo, contraseña, carrera, foto_perfil)
+            VALUES (%s, %s, %s, %s, %s)
+        """, (nombre, correo, contrasena, carrera, foto_perfil))
         mysql.connection.commit()
         cursor.close()
-        return redirect('/registro')  # Puedes cambiar esto por otra página o mensaje
+
+        return redirect('/registro')
 
     return render_template('registro.html')
+
 
 @app.route('/')
 def home():
